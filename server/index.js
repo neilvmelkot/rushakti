@@ -9,7 +9,14 @@ const rateLimit = require('express-rate-limit');
 const app  = express();
 const PORT = process.env.SERVER_PORT || 5000;
 
-app.use(helmet());
+app.use(helmet({
+  contentSecurityPolicy: {
+    directives: {
+      ...helmet.contentSecurityPolicy.getDefaultDirectives(),
+      'connect-src': ["'self'", 'https://www.googleapis.com'],
+    },
+  },
+}));
 
 const loginLimiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
