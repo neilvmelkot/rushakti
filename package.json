@@ -10,14 +10,14 @@
   },
   "scripts": {
     "start": "node server/index.js",
-    "build": "npm install --prefix server && node ./node_modules/react-scripts/bin/react-scripts.js build",
+    "build": "npm install && npm install --prefix server && node ./node_modules/react-scripts/bin/react-scripts.js build",
     "dev": "node ./node_modules/react-scripts/bin/react-scripts.js start",
     "test": "node ./node_modules/react-scripts/bin/react-scripts.js test",
     "postinstall": "chmod +x ./node_modules/.bin/react-scripts || true",
     "vectorize": "node scripts/vectorize.js"
   },
   "engines": {
-    "node": ">=18.0.0"
+    "node": "18.x"
   },
   "devDependencies": {
     "jimp": "^0.22.12",
