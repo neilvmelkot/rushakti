@@ -44,9 +44,13 @@ export default function App() {
   const lockedRef           = useRef(false);
   const slideRefs           = useRef([]);
 
-  const goTo = useCallback((index) => {
+  const goTo = useCallback((index, fromScroll = false) => {
     if (lockedRef.current || index === active || index < 0 || index >= SLIDES.length) return;
     lockedRef.current = true;
+    if (fromScroll && index < active) {
+      const dest = slideRefs.current[index];
+      if (dest) dest.scrollTop = dest.scrollHeight;
+    }
     setPrev(active);
     setActive(index);
     const leavingIndex = active;
@@ -107,7 +111,7 @@ export default function App() {
         }
         mouseAtEdge.current = false;
         edgeHitTime.current = 0;
-        goTo(e.deltaY > 0 ? active + 1 : active - 1);
+        goTo(e.deltaY > 0 ? active + 1 : active - 1, true);
         return;
       }
 
@@ -119,11 +123,11 @@ export default function App() {
       if (wheelAccum.current > 250) {
         wheelAccum.current = 0;
         edgeHitTime.current = 0;
-        goTo(active + 1);
+        goTo(active + 1, true);
       } else if (wheelAccum.current < -250) {
         wheelAccum.current = 0;
         edgeHitTime.current = 0;
-        goTo(active - 1);
+        goTo(active - 1, true);
       }
     };
     window.addEventListener('wheel', onWheel, { passive: false });
@@ -144,7 +148,7 @@ export default function App() {
         if (diff > 0 && !atBottom) return;
         if (diff < 0 && !atTop)    return;
       }
-      goTo(diff > 0 ? active + 1 : active - 1);
+      goTo(diff > 0 ? active + 1 : active - 1, true);
     };
     window.addEventListener('touchstart', onStart, { passive: true });
     window.addEventListener('touchend',   onEnd,   { passive: true });
