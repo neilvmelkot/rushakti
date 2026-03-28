@@ -111,7 +111,7 @@ export default function Apply() {
         )}
         </section>
 
-        {submitted && (
+        {(submitted || !applyEnabled) && (
           <div className="apply-lotus-wrap">
             <SubmitLotus />
           </div>
