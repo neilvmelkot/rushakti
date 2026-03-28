@@ -1,0 +1,61 @@
+.page-border {
+  position: fixed;
+  inset: 1vw;
+  border: 0.14vw solid rgba(139, 21, 56, 0.45);
+  border-bottom: none;
+  pointer-events: none;
+  z-index: 100;
+}
+
+/* bottom border drawn as two segments with a gap for the lotus */
+.page-border::after {
+  content: '';
+  position: absolute;
+  bottom: -0.14vw;
+  left: 0;
+  right: 0;
+  height: 0.14vw;
+  background: linear-gradient(
+    to right,
+    rgba(139, 21, 56, 0.45) calc(50% - 3vw),
+    transparent                calc(50% - 3vw),
+    transparent                calc(50% + 3vw),
+    rgba(139, 21, 56, 0.45) calc(50% + 3vw)
+  );
+}
+
+.border-lotus {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 0.5vw);
+}
+
+/* both dimensions explicit in vw — no px fallback */
+.border-lotus svg {
+  display: block;
+  width: 5vw;
+  /* viewBox is 48 wide × 26 tall → 26/48 × 5vw */
+  height: 2.71vw;
+}
+
+@media (max-width: 640px) {
+  .border-lotus svg {
+    width: 13vw;
+    height: 7.04vw; /* 26/48 × 13vw */
+  }
+  .border-lotus {
+    transform: translate(-50%, 0.8vw);
+  }
+  .page-border::after {
+    bottom: -0.28vw;
+    height: 0.28vw;
+    background: linear-gradient(
+      to right,
+      rgba(139, 21, 56, 0.45) calc(50% - 9vw),
+      transparent                calc(50% - 9vw),
+      transparent                calc(50% + 9vw),
+      rgba(139, 21, 56, 0.45) calc(50% + 9vw)
+    );
+  }
+}

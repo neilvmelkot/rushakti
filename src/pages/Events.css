@@ -1,0 +1,118 @@
+/* ── Events grid ────────────────────────────── */
+.events-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.event-card {
+  display: grid;
+  grid-template-columns: 8vw 1fr auto;
+  align-items: center;
+  gap: 3vw;
+  padding: 2.5vw 0;
+  border-bottom: 0.1vw solid rgba(139, 21, 56, 0.15);
+  transition: background 0.2s;
+}
+
+.event-card:first-child {
+  border-top: 0.1vw solid rgba(139, 21, 56, 0.15);
+}
+
+/* date block */
+.event-date {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2vw;
+}
+
+.event-day {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 1.2vw;
+  color: #8B1538;
+  letter-spacing: 0.05em;
+}
+
+.event-year {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 0.75vw;
+  color: rgba(139, 21, 56, 0.4);
+  letter-spacing: 0.1em;
+}
+
+/* body */
+.event-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4vw;
+}
+
+.event-type {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 0.72vw;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(139, 21, 56, 0.4);
+}
+
+.event-title {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 1.8vw;
+  letter-spacing: -0.01em;
+  color: #8B1538;
+}
+
+.event-location {
+  font-family: 'Syne', sans-serif;
+  font-weight: 400;
+  font-size: 0.82vw;
+  color: rgba(60, 20, 30, 0.45);
+  letter-spacing: 0.05em;
+}
+
+.event-desc {
+  font-family: 'Syne', sans-serif;
+  font-weight: 400;
+  font-size: 0.88vw;
+  line-height: 1.65;
+  color: rgba(60, 20, 30, 0.6);
+  max-width: 36vw;
+  margin-top: 0.3vw;
+}
+
+/* register button */
+.event-btn {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 0.78vw;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #8B1538;
+  background: none;
+  border: 0.12vw solid rgba(139, 21, 56, 0.4);
+  padding: 0.7vw 1.4vw;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s, color 0.2s;
+}
+
+.event-btn:hover {
+  background: #8B1538;
+  color: #f4f0ea;
+}
+
+/* ── Mobile ─────────────────────────────────── */
+@media (max-width: 640px) {
+  .event-card     { grid-template-columns: 1fr; gap: 3vw; padding: 6vw 0; }
+  .event-day      { font-size: 4vw; }
+  .event-year     { font-size: 3vw; }
+  .event-type     { font-size: 2.8vw; }
+  .event-title    { font-size: 5.5vw; }
+  .event-location { font-size: 3vw; }
+  .event-desc     { font-size: 3.5vw; max-width: 100%; }
+  .event-btn      { font-size: 3vw; padding: 2.5vw 5vw; width: fit-content; }
+}

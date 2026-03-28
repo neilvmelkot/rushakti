@@ -1,0 +1,44 @@
+{
+  "name": "rushakti",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^7.13.2",
+    "react-scripts": "5.0.1"
+  },
+  "scripts": {
+    "start": "node server/index.js",
+    "build": "npm install --prefix server && node ./node_modules/react-scripts/bin/react-scripts.js build",
+    "dev": "node ./node_modules/react-scripts/bin/react-scripts.js start",
+    "test": "node ./node_modules/react-scripts/bin/react-scripts.js test",
+    "postinstall": "chmod +x ./node_modules/.bin/react-scripts || true",
+    "vectorize": "node scripts/vectorize.js"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "devDependencies": {
+    "jimp": "^0.22.12",
+    "potrace": "^2.1.8"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app"
+    ]
+  },
+  "proxy": "http://localhost:5000",
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

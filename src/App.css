@@ -1,0 +1,85 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body, #root { height: 100%; overflow: hidden; }
+body { background: #f4f0ea; }
+
+/* ── Slide engine ────────────────────────────── */
+.slides-wrap {
+  position: fixed;
+  inset: 1vw;
+  overflow: hidden;
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  transition: transform 0.88s cubic-bezier(0.76, 0, 0.24, 1);
+  will-change: transform;
+  background: #f4f0ea;
+  scrollbar-width: none;
+}
+
+.slide::-webkit-scrollbar { display: none; }
+
+.slide-active   { transform: translateY(0); }
+.slide-above    { transform: translateY(-100%); }
+.slide-below    { transform: translateY(100%); }
+.slide-instant  { transition: none; }
+
+/* ── Home slide ──────────────────────────────── */
+.app-home {
+  height: 100%;
+  display: flex;
+  background: #f4f0ea;
+}
+
+.eye-side {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4vh 3vw;
+}
+
+.text-side {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 4vh 5vw 4vh 4.6vw;
+  gap: 1.6vw;
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  line-height: 0.88;
+}
+
+.brand-word {
+  display: block;
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 9vw;
+  letter-spacing: -0.02em;
+  color: #8B1538;
+}
+
+.tagline {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 1.1vw;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(139, 21, 56, 0.45);
+}
+
+/* ── Mobile ──────────────────────────────────── */
+@media (max-width: 640px) {
+  .app-home        { flex-direction: column; }
+  .eye-side        { padding: 5vw; padding-top: 40vw; flex: none; height: 55vh; align-items: flex-end; }
+  .text-side       { padding: 4vw 6vw 8vw; align-items: center; text-align: center; flex: 1; }
+  .brand-word      { font-size: 14vw; }
+  .tagline         { font-size: 3vw; }
+}

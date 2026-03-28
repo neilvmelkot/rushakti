@@ -1,0 +1,115 @@
+/* ── Page layout ────────────────────────────── */
+.apply-layout {
+  position: relative;
+}
+
+.apply-body {
+  max-width: 44vw;
+}
+
+/* ── Spinning lotus ─────────────────────────── */
+.apply-lotus-wrap {
+  position: absolute;
+  top: -23vw;
+  right: -2vw;
+  width: 30vw;
+  pointer-events: none;
+}
+
+
+.apply-form {
+  display: flex;
+  flex-direction: column;
+  gap: 2vw;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2vw;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5vw;
+}
+
+.form-field label {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 0.72vw;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(139, 21, 56, 0.55);
+}
+
+.form-field input,
+.form-field textarea {
+  font-family: 'Syne', sans-serif;
+  font-weight: 400;
+  font-size: 0.95vw;
+  color: rgba(60, 20, 30, 0.8);
+  background: transparent;
+  border: none;
+  border-bottom: 0.12vw solid rgba(139, 21, 56, 0.25);
+  padding: 0.6vw 0;
+  outline: none;
+  resize: none;
+  transition: border-color 0.2s;
+  width: 100%;
+}
+
+.form-field input::placeholder,
+.form-field textarea::placeholder {
+  color: rgba(139, 21, 56, 0.22);
+}
+
+.form-field input:focus,
+.form-field textarea:focus {
+  border-bottom-color: #8B1538;
+}
+
+/* submit */
+.apply-submit {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 0.85vw;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #f4f0ea;
+  background: #8B1538;
+  border: none;
+  padding: 1.1vw 2.5vw;
+  cursor: pointer;
+  margin-top: 1vw;
+  align-self: flex-start;
+  transition: opacity 0.2s;
+}
+
+.apply-submit:hover {
+  opacity: 0.85;
+}
+
+/* confirmation */
+.apply-confirmation {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5vw;
+}
+
+/* ── Mobile ─────────────────────────────────── */
+@media (max-width: 640px) {
+  .apply-lotus-wrap {
+    position: static;
+    width: 75vw;
+    margin: 8vw auto 0;
+  }
+  .apply-body          { max-width: 100%; }
+  .apply-form          { gap: 6vw; }
+  .form-row            { grid-template-columns: 1fr; gap: 6vw; }
+  .form-field label    { font-size: 3vw; }
+  .form-field input,
+  .form-field textarea { font-size: 4vw; padding: 2vw 0; }
+  .apply-submit        { font-size: 3.5vw; padding: 4vw 8vw; }
+}

@@ -1,0 +1,95 @@
+.admin-login-wrap {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f4f0ea;
+}
+
+.admin-login-box {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: min(420px, 90vw);
+}
+
+.admin-login-eyebrow {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: rgba(139, 21, 56, 0.45);
+}
+
+.admin-login-title {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 3rem;
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  color: #8B1538;
+  margin-top: -1rem;
+}
+
+.admin-login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.admin-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.admin-field label {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(139, 21, 56, 0.55);
+}
+
+.admin-field input {
+  font-family: 'Syne', sans-serif;
+  font-size: 0.95rem;
+  color: #3c141e;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(139, 21, 56, 0.3);
+  padding: 0.5rem 0;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.admin-field input:focus {
+  border-bottom-color: #8B1538;
+}
+
+.admin-login-error {
+  font-family: 'Syne', sans-serif;
+  font-size: 0.85rem;
+  color: #8B1538;
+}
+
+.admin-login-btn {
+  margin-top: 0.5rem;
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #f4f0ea;
+  background: #8B1538;
+  border: none;
+  padding: 0.9rem 2rem;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  align-self: flex-start;
+}
+
+.admin-login-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+.admin-login-btn:hover:not(:disabled) { opacity: 0.85; }

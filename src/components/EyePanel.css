@@ -1,0 +1,171 @@
+/* ── Eye wrap ─────────────────────────────────── */
+
+.eye-wrap {
+  position: relative;
+  width: min(44vw, 88%);
+  aspect-ratio: 423 / 266;
+  transform: translate(-0.4vw, -1vh);
+}
+
+.eye-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transform: scaleX(-1);
+}
+
+/* open eye always visible underneath */
+.eye-open { }
+
+/* closed eye on top — clips away like a lifting lid */
+.eye-closed {
+  position: absolute;
+  inset: 0;
+  animation: lidRise 2.2s cubic-bezier(0.4, 0, 0.15, 1) 0.4s forwards;
+}
+
+/* ── Lid animation ────────────────────────────────
+   Both keyframes use the same 12-point polygon so
+   CSS interpolates every point smoothly.
+
+   Bottom boundary goes from a flat line at 100%
+   (full eye covered) to an oval arc at ~38–54%
+   (just the lash/lid strip left), with a slight
+   tilt: outer corner (left after flip) is higher
+   than inner corner (right after flip).
+
+   The arc bulges downward in the center over the
+   iris — exactly the natural eyelid curve.
+─────────────────────────────────────────────────── */
+@keyframes lidRise {
+  0% {
+    /* bottom edge is a flat line — full closed eye visible */
+    clip-path: polygon(
+      0%   0%,
+      100% 0%,
+      100% 100%,
+      90%  100%,
+      79%  100%,
+      67%  100%,
+      55%  100%,
+      44%  100%,
+      33%  100%,
+      21%  100%,
+      10%  100%,
+      0%   100%
+    );
+    opacity: 1;
+  }
+
+  72% {
+    /* Arc peaks in the LEFT third (outer corner side) —
+       matching the natural upper-eyelid shape of a real eye.
+       Outer corner (left, x=0%)  sits at 44% from top.
+       Arc deepest point at x≈33% reaching 56%.
+       Inner corner (right, x=100%) rises back to 41%. */
+    clip-path: polygon(
+      0%   0%,
+      100% 0%,
+      100% 41%,   /* inner corner — shallower */
+      90%  43%,
+      78%  47%,
+      65%  51%,
+      53%  54%,
+      40%  56%,   /* deepest — peak of arc, left of centre */
+      30%  56%,
+      20%  53%,
+      10%  48%,
+      0%   44%    /* outer corner — slightly deeper than inner */
+    );
+    opacity: 1;
+  }
+
+  100% {
+    clip-path: polygon(
+      0%   0%,
+      100% 0%,
+      100% 41%,
+      90%  43%,
+      78%  47%,
+      65%  51%,
+      53%  54%,
+      40%  56%,
+      30%  56%,
+      20%  53%,
+      10%  48%,
+      0%   44%
+    );
+    opacity: 0;
+  }
+}
+
+/* lid drop — hover close */
+@keyframes lidDrop {
+  0% {
+    clip-path: polygon(
+      0%   0%, 100% 0%,
+      100% 41%, 90%  43%, 78%  47%, 65%  51%,
+      53%  54%, 40%  56%, 30%  56%, 20%  53%,
+      10%  48%, 0%   44%
+    );
+    opacity: 0;
+  }
+  15% { opacity: 1; }
+  100% {
+    clip-path: polygon(
+      0%   0%, 100% 0%,
+      100% 100%, 90% 100%, 79% 100%, 67% 100%,
+      55% 100%, 44% 100%, 33% 100%, 21% 100%,
+      10% 100%, 0%  100%
+    );
+    opacity: 1;
+  }
+}
+
+/* lid rise quick — after hover leave */
+@keyframes lidRiseQuick {
+  0% {
+    clip-path: polygon(
+      0%   0%, 100% 0%,
+      100% 100%, 90% 100%, 79% 100%, 67% 100%,
+      55% 100%, 44% 100%, 33% 100%, 21% 100%,
+      10% 100%, 0%  100%
+    );
+    opacity: 1;
+  }
+  80% {
+    clip-path: polygon(
+      0%   0%, 100% 0%,
+      100% 41%, 90%  43%, 78%  47%, 65%  51%,
+      53%  54%, 40%  56%, 30%  56%, 20%  53%,
+      10%  48%, 0%   44%
+    );
+    opacity: 1;
+  }
+  100% {
+    clip-path: polygon(
+      0%   0%, 100% 0%,
+      100% 41%, 90%  43%, 78%  47%, 65%  51%,
+      53%  54%, 40%  56%, 30%  56%, 20%  53%,
+      10%  48%, 0%   44%
+    );
+    opacity: 0;
+  }
+}
+
+.eye-closing {
+  animation: lidDrop 0.45s cubic-bezier(0.4, 0, 0.2, 1) forwards !important;
+}
+
+.eye-open-quick {
+  animation: lidRiseQuick 0.7s cubic-bezier(0.4, 0, 0.15, 1) forwards !important;
+}
+
+/* ── Mobile ──────────────────────────────────── */
+@media (max-width: 640px) {
+  .eye-wrap {
+    width: 90vw;
+    transform: none;
+  }
+}

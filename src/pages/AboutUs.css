@@ -1,0 +1,170 @@
+/* ── Scroll reveal ──────────────────────────── */
+.reveal-section {
+  opacity: 0;
+  transform: translateY(2.5vw);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal-section.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Hero wrapper ───────────────────────────── */
+.about-hero-wrap {
+  display: flex;
+  align-items: center;
+  gap: 4vw;
+  padding-top: 4vw;
+}
+
+.about-hero-wrap .page-hero {
+  flex: 1;
+  padding-top: 0;
+  max-width: none;
+}
+
+.about-logo {
+  width: 22vw;
+  height: auto;
+  flex-shrink: 0;
+  opacity: 0.92;
+  transform: translateX(-2vw);
+}
+
+/* ── Pillars ────────────────────────────────── */
+.about-pillars.reveal-section {
+  transform: translateY(5vw);
+}
+.about-pillars.reveal-section.revealed {
+  transform: translateY(0);
+}
+
+.about-pillars {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3vw;
+}
+
+.pillar {
+  display: flex;
+  flex-direction: column;
+  gap: 1vw;
+  padding: 2.5vw;
+  border: 0.12vw solid rgba(139, 21, 56, 0.2);
+  transition: background 0.3s ease, border-color 0.3s ease;
+  cursor: default;
+}
+
+.pillar:hover {
+  background: #8B1538;
+  border-color: #8B1538;
+}
+
+.pillar:hover .pillar-title {
+  color: #f4f0ea;
+}
+
+.pillar:hover .pillar-rule {
+  background: rgba(244, 240, 234, 0.4);
+}
+
+.pillar:hover .pillar-body {
+  color: rgba(244, 240, 234, 0.75);
+}
+
+.pillar-title {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 2.2vw;
+  letter-spacing: -0.02em;
+  color: #8B1538;
+  transition: color 0.3s ease;
+}
+
+.pillar-rule {
+  width: 2.5vw;
+  height: 0.12vw;
+  background: rgba(139, 21, 56, 0.35);
+  transition: background 0.3s ease;
+}
+
+.pillar-body {
+  font-family: 'Syne', sans-serif;
+  font-weight: 400;
+  font-size: 0.9vw;
+  line-height: 1.7;
+  color: rgba(60, 20, 30, 0.6);
+  transition: color 0.3s ease;
+}
+
+/* ── E-board ────────────────────────────────── */
+.about-eboard {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5vw;
+}
+
+.eboard-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2vw;
+}
+
+.eboard-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8vw;
+}
+
+.eboard-photo {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  background: rgba(139, 21, 56, 0.08);
+  border: 0.12vw solid rgba(139, 21, 56, 0.15);
+}
+
+.eboard-name {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 1vw;
+  color: #8B1538;
+  letter-spacing: -0.01em;
+}
+
+.eboard-role {
+  font-family: 'Syne', sans-serif;
+  font-weight: 400;
+  font-size: 0.8vw;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(139, 21, 56, 0.45);
+}
+
+/* ── Story ──────────────────────────────────── */
+.about-story {
+  display: flex;
+  align-items: flex-start;
+}
+
+.story-text {
+  max-width: 48vw;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5vw;
+}
+
+/* ── Mobile ─────────────────────────────────── */
+@media (max-width: 640px) {
+  .about-hero-wrap { flex-direction: column; gap: 6vw; }
+  .about-logo      { width: 55vw; transform: none; }
+  .about-pillars   { grid-template-columns: 1fr; gap: 5vw; }
+  .pillar          { padding: 6vw; gap: 3vw; }
+  .pillar-title    { font-size: 6vw; }
+  .pillar-rule     { width: 8vw; height: 0.4vw; }
+  .pillar-body     { font-size: 3.5vw; }
+  .story-text      { max-width: 100%; gap: 4vw; }
+  .eboard-grid     { grid-template-columns: repeat(2, 1fr); gap: 5vw; }
+  .eboard-name     { font-size: 3.5vw; }
+  .eboard-role     { font-size: 2.8vw; }
+  .about-eboard    { gap: 5vw; }
+}
