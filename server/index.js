@@ -1,11 +1,23 @@
 require('dotenv').config({ path: '../.env' });
-const express  = require('express');
-const cors     = require('cors');
-const mongoose = require('mongoose');
-const path     = require('path');
+const express   = require('express');
+const cors      = require('cors');
+const mongoose  = require('mongoose');
+const path      = require('path');
+const helmet    = require('helmet');
+const rateLimit = require('express-rate-limit');
 
 const app  = express();
 const PORT = process.env.SERVER_PORT || 5000;
+
+app.use(helmet());
+
+const loginLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 10,                   // 10 attempts per window
+  message: { error: 'Too many login attempts. Try again in 15 minutes.' },
+  standardHeaders: true,
+  legacyHeaders: false,
+});
 
 const allowedOrigins = [
   'http://localhost:3000',
@@ -22,7 +34,7 @@ app.use(cors({
 }));
 app.use(express.json({ limit: '10mb' }));
 
-app.use('/api/auth',  require('./routes/auth'));
+app.use('/api/auth',  loginLimiter, require('./routes/auth'));
 app.use('/api/admin', require('./routes/admin'));
 app.get('/api/health', (_req, res) => res.json({ ok: true }));
 
