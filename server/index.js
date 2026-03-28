@@ -54,6 +54,14 @@ if (process.env.NODE_ENV === 'production') {
 mongoose.connect(process.env.MONGODB_URI)
   .then(() => {
     console.log('Connected to MongoDB — RUShakti');
-    app.listen(PORT, () => console.log(`Server on port ${PORT}`));
+    app.listen(PORT, () => {
+      console.log(`Server on port ${PORT}`);
+      if (process.env.NODE_ENV === 'production' && process.env.SERVER_URL) {
+        setInterval(() => {
+          fetch(`${process.env.SERVER_URL}/api/health`)
+            .catch(() => {});
+        }, 14 * 60 * 1000);
+      }
+    });
   })
   .catch(err => { console.error(err); process.exit(1); });
