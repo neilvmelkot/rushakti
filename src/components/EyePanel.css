@@ -22,6 +22,9 @@
 .eye-closed {
   position: absolute;
   inset: 0;
+}
+
+.eye-closed.eye-animate {
   animation: lidRise 2.2s cubic-bezier(0.4, 0, 0.15, 1) 0.4s forwards;
 }
 
