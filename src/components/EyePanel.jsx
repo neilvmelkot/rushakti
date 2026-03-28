@@ -11,8 +11,8 @@ export default function EyePanel() {
   }
 
   return (
-    <div className="eye-wrap" style={{ visibility: ready ? 'visible' : 'hidden' }}>
-      <img className="eye-img eye-open" src="/eye-open.svg" alt="" draggable={false} onLoad={onImgLoad} />
+    <div className="eye-wrap">
+      <img className="eye-img eye-open" src="/eye-open.svg" alt="" draggable={false} onLoad={onImgLoad} style={{ visibility: ready ? 'visible' : 'hidden' }} />
       <img
         className={`eye-img eye-closed${ready ? ' eye-animate' : ''}`}
         src="/eye-closed.svg"
